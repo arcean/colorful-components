@@ -32,6 +32,9 @@ Page {
         ListElement {
             name: "Dialog"
         }
+        ListElement {
+            name: "TextField"
+        }
     }
 
     AboutDialog {
