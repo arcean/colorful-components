@@ -11,8 +11,8 @@ PageStackWindow {
     property string __APP_VERSION: "01.10.2012"
     // Theme:
     property string __TEXT_COLOR: theme.inverted ? "white" : "black"
-    property string __ACTIVE_COLOR: "color11"
-    property string __ACTIVE_COLOR_TEXT: "#8D18BE"
+    property string __ACTIVE_COLOR: "color6"
+    property string __ACTIVE_COLOR_TEXT: "#16ABCF"
     property string __DISABLED_COLOR_TEXT: "#cccccc"
     // Font size:
     property int __SMALL_FONT_SIZE: 18
