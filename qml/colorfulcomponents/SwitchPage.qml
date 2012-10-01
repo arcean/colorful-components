@@ -18,7 +18,7 @@ Page {
         id: header
         anchors.top: parent.top
         anchors.left: parent.left
-        title: "TextField"
+        title: "Switch"
     }
 
     Flickable {
@@ -29,24 +29,38 @@ Page {
         anchors.margins: __MARGIN
         contentHeight: height + 1
 
-        TextField {
-            id: normalTextfield
+        Label {
+            id: normalLabel
             anchors.topMargin: __MARGIN
             anchors.top: parent.top
             anchors.left: parent.left
-            anchors.right: parent.right
 
-            text: "I'm a standard text field"
+            text: "Label + standard switch"
         }
 
-        AccentedTextField {
-            id: accentedTextfield
-            anchors.topMargin: __MARGIN
-            anchors.top: normalTextfield.bottom
-            anchors.left: parent.left
+        Switch {
+            id: normalSwitch
             anchors.right: parent.right
+            anchors.verticalCenter: normalLabel.verticalCenter
 
-            text: "I'm an accented text field"
+            checked: true
+        }
+
+        Label {
+            id: accentedLabel
+            anchors.topMargin: __MARGIN
+            anchors.top: normalLabel.bottom
+            anchors.left: parent.left
+
+            text: "Label + accented switch"
+        }
+
+        AccentedSwitch {
+            id: accentedSwitch
+            anchors.right: parent.right
+            anchors.verticalCenter: accentedLabel.verticalCenter
+
+            checked: true
         }
 
 

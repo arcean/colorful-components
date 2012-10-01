@@ -33,6 +33,9 @@ Page {
             name: "Dialog"
         }
         ListElement {
+            name: "Switch"
+        }
+        ListElement {
             name: "TextField"
         }
     }
