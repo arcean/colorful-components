@@ -3,6 +3,8 @@ import com.nokia.meego 1.0
 import "components"
 
 Page {
+    tools: commonTools
+
     PageHeader {
         id: header
         anchors.top: parent.top

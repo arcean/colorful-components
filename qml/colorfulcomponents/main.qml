@@ -22,7 +22,41 @@ PageStackWindow {
     // Margins:
     property int __MARGIN: 16
 
+    Component.onCompleted: {
+        // Uncomment the following line to change the theme to the dark one
+        //theme.inverted = true;
+    }
+
+    // Background settigns:
+    /*platformStyle: PageStackWindowStyle {
+        background: "image://theme/meegotouch-pin-background"
+        backgroundFillMode: Image.Stretch
+    }*/
+
     MainPage {
         id: mainPage
     }
+
+    ToolBarLayout {
+        id: commonTools
+        visible: true
+        ToolIcon {
+            platformIconId: "toolbar-view-menu"
+            anchors.right: (parent === undefined) ? undefined : parent.right
+            onClicked: (myMenu.status === DialogStatus.Closed) ? myMenu.open() : myMenu.close()
+        }
+    }
+
+    Menu {
+        id: myMenu
+        visualParent: pageStack
+        MenuLayout {
+            MenuItem {
+                text: qsTr("Invert theme")
+                onClicked: theme.inverted = !theme.inverted
+            }
+        }
+    }
 }
+
+    //__ACTIVE_COLOR_TEXT for color11: "#8D18BE"
