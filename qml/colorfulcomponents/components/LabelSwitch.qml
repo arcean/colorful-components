@@ -5,8 +5,6 @@ Item {
     property alias text: label.text
     property alias checked: accentedSwitch.checked
 
-    signal checked()
-
     Label {
         id: label
         anchors.left: parent.left

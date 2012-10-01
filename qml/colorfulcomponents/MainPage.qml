@@ -33,6 +33,9 @@ Page {
             name: "Dialog"
         }
         ListElement {
+            name: "Separator"
+        }
+        ListElement {
             name: "Switch"
         }
         ListElement {
