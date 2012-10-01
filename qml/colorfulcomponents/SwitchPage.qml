@@ -63,6 +63,16 @@ Page {
             checked: true
         }
 
+        LabelSwitch {
+            id: labelSwitch
+            anchors.topMargin: __MARGIN
+            anchors.top: accentedLabel.bottom
+            anchors.left: parent.left
+            anchors.right: parent.right
+
+            text: "LabelSwitch component"
+            checked: true
+        }
 
     }
 
