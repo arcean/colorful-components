@@ -29,7 +29,7 @@ Page {
         anchors.margins: __MARGIN
         contentHeight: height + 1
 
-        Button {
+        StyledButton {
 
             anchors.topMargin: __MARGIN
             anchors.top: parent.top
