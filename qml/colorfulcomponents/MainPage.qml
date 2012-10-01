@@ -25,6 +25,9 @@ Page {
     ListModel {
         id: exampleModel
         ListElement {
+            name: "Button"
+        }
+        ListElement {
             name: "Dialog"
         }
     }
