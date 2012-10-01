@@ -14,8 +14,8 @@ Image {
         anchors.verticalCenter: parent.verticalCenter
         anchors.left: parent.left
         anchors.leftMargin: __MARGIN
-        color: __TEXT_COLOR
-        font.pixelSize: __STANDARD_FONT_SIZE
-        font.bold: true
+        color: "white"
+        font.pixelSize: __HEADER_FONT_SIZE
+        //font.bold: true
     }
 }

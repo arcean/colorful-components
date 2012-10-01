@@ -3,29 +3,30 @@ import com.nokia.meego 1.0
 import "components"
 
 Page {
-    tools: commonTools
-
     PageHeader {
+        id: header
         anchors.top: parent.top
         anchors.left: parent.left
         title: __APP_NAME + " page"
     }
 
-    Label {
-        id: label
-        anchors.centerIn: parent
-        text: qsTr("Hello world!")
-        visible: false
+    ListView {
+        anchors.top: header.bottom
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.bottom: parent.bottom
+
+        model: exampleModel
+        delegate:     MainListDelegate {
+            id: exampleDelegate
+        }
     }
 
-    Button{
-        anchors {
-            horizontalCenter: parent.horizontalCenter
-            top: label.bottom
-            topMargin: 10
+    ListModel {
+        id: exampleModel
+        ListElement {
+            name: "Dialog"
         }
-        text: qsTr("Click here!")
-        onClicked: aboutDialog.open()
     }
 
     AboutDialog {
