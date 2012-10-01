@@ -29,56 +29,49 @@ Page {
         anchors.margins: __MARGIN
         contentHeight: height + 1
 
-    Label {
-        id: labelTop
-        anchors.top: parent.top
-        anchors.left: parent.left
-        anchors.right: parent.right
-        text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
-    }
+        Label {
+            id: labelTop
+            anchors.top: parent.top
+            anchors.left: parent.left
+            anchors.right: parent.right
+            text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+        }
 
-    Separator {
-        id: separator
-        anchors.topMargin: __MARGIN
-        anchors.top: labelTop.bottom
-        anchors.left: parent.left
-        anchors.right: parent.right
-    }
+        Separator {
+            id: separator
+            anchors.topMargin: __MARGIN
+            anchors.top: labelTop.bottom
+            anchors.left: parent.left
+            anchors.right: parent.right
+        }
 
-    Label {
-        id: labelMid
-        anchors.topMargin: __MARGIN
-        anchors.top: separator.bottom
-        anchors.left: parent.left
-        anchors.right: parent.right
-        text: "That's a standard separator ^."
-    }
+        Label {
+            id: labelMid
+            anchors.topMargin: __MARGIN
+            anchors.top: separator.bottom
+            anchors.left: parent.left
+            anchors.right: parent.right
+            text: "That's a standard separator ^."
+        }
 
-    LabelSeparator {
-        id: labelSeparator
-        anchors.topMargin: __MARGIN
-        anchors.top: labelMid.bottom
-        anchors.left: parent.left
-        anchors.right: parent.right
+        LabelSeparator {
+            id: labelSeparator
+            anchors.topMargin: __MARGIN
+            anchors.top: labelMid.bottom
+            anchors.left: parent.left
+            anchors.right: parent.right
 
-        text: "Example"
-    }
+            text: "Example"
+        }
 
-    Label {
-        id: labelBot
-        anchors.topMargin: __MARGIN
-        anchors.top: labelSeparator.bottom
-        anchors.left: parent.left
-        anchors.right: parent.right
-        text: "That's a LabelSeparator ^."
-    }
+        Label {
+            id: labelBot
+            anchors.topMargin: __MARGIN
+            anchors.top: labelSeparator.bottom
+            anchors.left: parent.left
+            anchors.right: parent.right
+            text: "That's a LabelSeparator ^."
+        }
 
-    }
-
-    AboutDialog {
-        id: aboutDialog
-
-        message: "Technology preview for the colorful-components package. <br><br> &copy; Tomasz Pieniążek 2012 <br>"
-        icon: "gfx/info.png"
     }
 }

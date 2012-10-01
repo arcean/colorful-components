@@ -18,7 +18,7 @@ Page {
         id: header
         anchors.top: parent.top
         anchors.left: parent.left
-        title: "TextField"
+        title: "MessageHandler"
     }
 
     Flickable {
@@ -29,24 +29,27 @@ Page {
         anchors.margins: __MARGIN
         contentHeight: height + 1
 
-        TextField {
-            id: normalTextfield
-            anchors.topMargin: __MARGIN
+        Label {
+            id: label
             anchors.top: parent.top
             anchors.left: parent.left
             anchors.right: parent.right
 
-            text: "I'm a standard text field"
+            text: "MessageHandler implements InfoBanner component. The InfoBanner component is used to display information to the user. The number of lines of text is limited to 3."
         }
 
-        AccentedTextField {
-            id: accentedTextfield
+        AccentedButton {
             anchors.topMargin: __MARGIN
-            anchors.top: normalTextfield.bottom
-            anchors.left: parent.left
-            anchors.right: parent.right
+            anchors.top: label.bottom
+            anchors.horizontalCenter: parent.horizontalCenter
 
-            text: "I'm an accented text field"
+            text: "Show me a message"
+            onClicked: messageHandler.showMessage("Here's your message")
         }
     }
+
+    MessageHandler {
+        id: messageHandler
+    }
+
 }

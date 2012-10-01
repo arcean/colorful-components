@@ -75,11 +75,4 @@ Page {
         }
 
     }
-
-    AboutDialog {
-        id: aboutDialog
-
-        message: "Technology preview for the colorful-components package. <br><br> &copy; Tomasz Pieniążek 2012 <br>"
-        icon: "gfx/info.png"
-    }
 }

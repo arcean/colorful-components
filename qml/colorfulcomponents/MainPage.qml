@@ -33,6 +33,12 @@ Page {
             name: "Dialog"
         }
         ListElement {
+            name: "MessageHandler"
+        }
+        ListElement {
+            name: "SelectionDialog"
+        }
+        ListElement {
             name: "Separator"
         }
         ListElement {
