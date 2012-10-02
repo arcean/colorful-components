@@ -30,7 +30,13 @@ Page {
             name: "Button"
         }
         ListElement {
+            name: "ComboboxItem"
+        }
+        ListElement {
             name: "Dialog"
+        }
+        ListElement {
+            name: "Header"
         }
         ListElement {
             name: "MessageHandler"
