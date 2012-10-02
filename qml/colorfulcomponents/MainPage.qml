@@ -36,6 +36,9 @@ Page {
             name: "Dialog"
         }
         ListElement {
+            name: "HarmattanTimePicker"
+        }
+        ListElement {
             name: "Header"
         }
         ListElement {
