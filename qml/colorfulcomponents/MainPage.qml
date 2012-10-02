@@ -48,6 +48,9 @@ Page {
             name: "Separator"
         }
         ListElement {
+            name: "Sheet"
+        }
+        ListElement {
             name: "Switch"
         }
         ListElement {
