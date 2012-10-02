@@ -93,7 +93,7 @@ Page {
                 spacing: 10
 
                 Label {
-                    text: "I'm a accented sheet"
+                    text: "I'm an accented sheet"
                 }
             }
         }

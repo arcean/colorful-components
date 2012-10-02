@@ -40,6 +40,7 @@ Page {
         AccentedTumblerButton {
             id: accentedTumblerButton
             anchors.top: tumblerButton.bottom
+            anchors.topMargin: __MARGIN
             anchors.horizontalCenter: parent.horizontalCenter
             width: 400
 
