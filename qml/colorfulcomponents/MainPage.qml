@@ -56,6 +56,9 @@ Page {
         ListElement {
             name: "TextField"
         }
+        ListElement {
+            name: "TumblerButton"
+        }
     }
 
     AboutDialog {
