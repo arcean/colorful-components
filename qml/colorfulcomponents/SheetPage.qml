@@ -68,7 +68,7 @@ Page {
                 spacing: 10
 
                 Label {
-                    text: "I'm the standard sheet"
+                    text: "I'm a standard sheet"
                 }
             }
         }
@@ -93,7 +93,7 @@ Page {
                 spacing: 10
 
                 Label {
-                    text: "I'm the accented sheet"
+                    text: "I'm a accented sheet"
                 }
             }
         }

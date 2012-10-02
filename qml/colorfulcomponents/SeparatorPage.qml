@@ -49,7 +49,7 @@ Page {
             anchors.top: separator.bottom
             anchors.left: parent.left
             anchors.right: parent.right
-            text: "That's a standard separator ^."
+            text: "That's a Separator ^."
         }
 
         LabelSeparator {
