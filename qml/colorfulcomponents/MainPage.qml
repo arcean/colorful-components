@@ -9,6 +9,7 @@ Page {
         id: header
         anchors.top: parent.top
         anchors.left: parent.left
+        anchors.right: parent.right
         title: __APP_NAME + " page"
     }
 
@@ -34,6 +35,9 @@ Page {
         }
         ListElement {
             name: "Dialog"
+        }
+        ListElement {
+            name: "HarmattanDatePicker"
         }
         ListElement {
             name: "HarmattanTimePicker"

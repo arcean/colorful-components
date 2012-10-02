@@ -15,8 +15,7 @@ Image {
     Label {
         id: titleLabel
         x: __MARGIN
-        //                   (72 - 40)/2, where 72 == header.height
-        y: subtitle.length == 0 ? 16 : 10
+        y: subtitle.length == 0 ? 15 : 10
 
         color: "white"
         font.pixelSize: subtitle.length == 0 ? __HEADER_FONT_SIZE : __STANDARD_FONT_SIZE

@@ -14,6 +14,7 @@ Page {
         id: header
         anchors.top: parent.top
         anchors.left: parent.left
+        anchors.right: parent.right
         title: "Header"
 
         visible: true
@@ -23,6 +24,7 @@ Page {
         id: clickableHeader
         anchors.top: parent.top
         anchors.left: parent.left
+        anchors.right: parent.right
         title: "Header"
 
         visible: false
