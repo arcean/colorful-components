@@ -3,16 +3,13 @@ import com.nokia.meego 1.0
 import "components"
 
 Page {
-    tools: ToolBar {
-        id: toolbar
-
-        tools: ToolBarLayout {
-            ToolIcon {
-                platformIconId: "toolbar-back"
-                onClicked: appWindow.pageStack.pop()
-            }
+    tools: ToolBarLayout {
+        ToolIcon {
+            platformIconId: "toolbar-back"
+            onClicked: appWindow.pageStack.pop()
         }
     }
+
 
     PageHeader {
         id: header

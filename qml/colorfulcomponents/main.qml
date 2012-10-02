@@ -13,7 +13,7 @@ PageStackWindow {
     property string __TEXT_COLOR: theme.inverted ? "white" : "black"
     property string __ACTIVE_COLOR: "color6"
     property string __ACTIVE_COLOR_TEXT: "#16ABCF"
-    property string __DISABLED_COLOR_TEXT: "#cccccc"
+    property string __DISABLED_COLOR_TEXT: "#797979"
     // Font size:
     property int __SMALL_FONT_SIZE: 18
     property int __STANDARD_FONT_SIZE: 24
