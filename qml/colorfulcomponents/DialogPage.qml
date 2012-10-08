@@ -27,7 +27,7 @@ Page {
         contentHeight: height + 1
 
         StyledButton {
-
+            id: aboutDialogButton
             anchors.topMargin: __MARGIN
             anchors.top: parent.top
             anchors.horizontalCenter: parent.horizontalCenter
@@ -36,6 +36,28 @@ Page {
             onClicked: aboutDialog.open()
         }
 
+        StyledButton {
+            id: commonDialogButton
+            anchors.topMargin: __MARGIN
+            anchors.top: aboutDialogButton.bottom
+            anchors.horizontalCenter: parent.horizontalCenter
+
+            text: "Open common dialog"
+            onClicked: commonDialog.open()
+        }
+
+    }
+
+    CommonDialog {
+        id: commonDialog
+        titleText: "CommonDialog"
+
+        content: Item {
+            Label {
+                color: "white"
+                text: "Placeholder"
+            }
+        }
     }
 
     AboutDialog {
