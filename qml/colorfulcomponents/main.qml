@@ -8,7 +8,7 @@ PageStackWindow {
 
     // Base:
     property string __APP_NAME: "Colorful-components"
-    property string __APP_VERSION: "0.0.1"
+    property string __APP_VERSION: "0.0.2"
     // Theme:
     property string __TEXT_COLOR: theme.inverted ? "white" : "black"
     property string __ACTIVE_COLOR: "color6"
