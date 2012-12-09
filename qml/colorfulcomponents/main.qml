@@ -8,7 +8,7 @@ PageStackWindow {
 
     // Base:
     property string __APP_NAME: "Colorful-components"
-    property string __APP_VERSION: "0.0.3"
+    property string __APP_VERSION: "0.0.4"
     // Theme:
     property string __TEXT_COLOR: theme.inverted ? "white" : "black"
     property string __ACTIVE_COLOR: "color6"
@@ -33,8 +33,11 @@ PageStackWindow {
         backgroundFillMode: Image.Stretch
     }*/
 
-    AccentedSheet {
-        id: ax
+    AboutDialog {
+        id: aboutDialog
+
+        message: "Technology preview for the colorful-components package. <br><br> &copy; Tomasz Pieniążek 2012 <br>"
+        icon: "gfx/info.png"
     }
 
     MainPage {
@@ -58,6 +61,10 @@ PageStackWindow {
             MenuItem {
                 text: qsTr("Invert theme")
                 onClicked: theme.inverted = !theme.inverted
+            }
+            MenuItem {
+                text: qsTr("About")
+                onClicked: aboutDialog.open()
             }
         }
     }

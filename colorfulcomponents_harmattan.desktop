@@ -4,7 +4,7 @@ Version=1.0
 Type=Application
 Terminal=false
 Name=colorful-components
-Exec=/usr/bin/invoker --type=d -s /opt/colorful-components/bin/colorful-components
+Exec=/usr/bin/invoker --type=d -s /opt/colorfulcomponents/bin/colorfulcomponents
 Icon=/usr/share/icons/hicolor/80x80/apps/colorful-components80.png
 X-Window-Icon=
 X-HildonDesk-ShowInToolbar=true
