@@ -19,23 +19,29 @@ Page {
         title: "HarmattanDatePicker"
     }
 
-    HarmattanDatePicker {
-        id: datePicker
+    Flickable {
+        anchors.top: header.bottom
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.bottom: parent.bottom
+        anchors.margins: __MARGIN
+        contentHeight: datePicker.height + 1
 
-        anchors {
-            top: header.bottom
-            horizontalCenter: parent.horizontalCenter
-        }
+        HarmattanDatePicker {
+            id: datePicker
 
-        function orientationString() {
-            if (screen.currentOrientation === Screen.Portrait || screen.currentOrientation === Screen.PortraitInverted )
-                return "portrait"
-            else
-                return "landscape"
-        }
+            anchors.centerIn: parent
 
-        platformStyle: DatePickerStyle {
-            orientationString: datePicker.orientationString()
+            function orientationString() {
+                if (screen.currentOrientation === Screen.Portrait || screen.currentOrientation === Screen.PortraitInverted )
+                    return "portrait"
+                else
+                    return "landscape"
+            }
+
+            platformStyle: DatePickerStyle {
+                orientationString: datePicker.orientationString()
+            }
         }
     }
 }

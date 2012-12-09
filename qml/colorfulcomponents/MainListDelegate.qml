@@ -32,6 +32,17 @@ Item {
         source: theme.inverted ? "gfx/drilldown-arrow-white.png" : "gfx/drilldown-arrow.png"
     }
 
+    Rectangle {
+        id: highlight
+
+        anchors.fill: parent;
+        color: __ACTIVE_COLOR_TEXT
+        opacity: 0.5
+        smooth: true
+        visible: mouseArea.pressed
+    }
+
+
     MouseArea {
         id: mouseArea
 

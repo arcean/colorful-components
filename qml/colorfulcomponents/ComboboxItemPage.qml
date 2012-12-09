@@ -14,7 +14,8 @@ Page {
         id: header
         anchors.top: parent.top
         anchors.left: parent.left
-        title: "Button"
+        anchors.right: parent.right
+        title: "ComboboxItem"
     }
 
     Flickable {
