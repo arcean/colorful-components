@@ -38,6 +38,7 @@ Item {
         anchors.fill: parent;
         color: __ACTIVE_COLOR_TEXT
         opacity: 0.5
+        radius: 7
         smooth: true
         visible: mouseArea.pressed
     }
