@@ -1,6 +1,7 @@
 import QtQuick 1.1
 import com.nokia.meego 1.0
 import "components"
+import "GetColor.js" as Color
 PageStackWindow {
     id: appWindow
 
@@ -8,7 +9,7 @@ PageStackWindow {
 
     // Base:
     property string __APP_NAME: "Colorful-components"
-    property string __APP_VERSION: "0.0.4"
+    property string __APP_VERSION: "0.1.0"
     // Theme:
     property string __TEXT_COLOR: theme.inverted ? "white" : "black"
     property string __ACTIVE_COLOR: "color6"
@@ -21,6 +22,27 @@ PageStackWindow {
     property int __LARGE_FONT_SIZE: 40
     // Margins:
     property int __MARGIN: 16
+
+    // ACTIVE_COLOR_TEXT:
+    // - color1 (basement): #1180DD
+    // - color2:  #61B500
+    // - color3:  #3C870C
+    // - color4:  #337608
+    // - color5:  #2F6500
+    // - color6:  #16ABCF
+    // - color7:  #007CC7
+    // - color8:  #0066BA
+    // - color9:  #1C50AD
+    // - color10: #6300BA
+    // - color11: #850CB8
+    // - color12: #CA09B8
+    // - color13: #E5009F
+    // - color14: #EC5400
+    // - color15: #E7640A
+    // - color16: #F47119
+    // - color17: #FC8300
+    // - color18: #EA9307
+    // - color19: #EFAF11
 
     Component.onCompleted: {
         // Uncomment the following line to change the theme to the dark one
@@ -65,6 +87,20 @@ PageStackWindow {
             MenuItem {
                 text: qsTr("About")
                 onClicked: aboutDialog.open()
+            }
+            Repeater {
+                model: 19
+                MenuItem {
+                    text: qsTr("color" + (index + 1))
+                    onClicked: {
+                        if (text === "color1")
+                            __ACTIVE_COLOR = "";
+                        else
+                            __ACTIVE_COLOR = text;
+
+                        __ACTIVE_COLOR_TEXT = Color.getColor(text);
+                    }
+                }
             }
         }
     }

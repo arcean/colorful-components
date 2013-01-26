@@ -5,7 +5,7 @@ Image {
     id: header
     z: 1
     height: 72
-    source: "image://theme/" + __ACTIVE_COLOR + "-meegotouch-view-header-fixed"
+    source: "image://theme/" + __ACTIVE_COLOR + (__ACTIVE_COLOR === "" ? "" : "-") + "meegotouch-view-header-fixed"
 
     property alias title: titleLabel.text
 
@@ -14,7 +14,7 @@ Image {
         anchors.verticalCenter: parent.verticalCenter
         anchors.left: parent.left
         anchors.leftMargin: __MARGIN
-        color: "white"
+        color: __ACTIVE_COLOR === "" ? "black" : "white"
         font.pixelSize: __HEADER_FONT_SIZE
         //font.bold: true
     }

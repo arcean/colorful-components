@@ -9,17 +9,17 @@ Image {
     signal clicked()
     z: 1
     height: 72
-    source: (mouseArea.pressed && clickable) ? "image://theme/" + __ACTIVE_COLOR + "-meegotouch-view-header-fixed-pressed" :
-                                               "image://theme/" + __ACTIVE_COLOR + "-meegotouch-view-header-fixed"
+    source: (mouseArea.pressed && clickable) ? "image://theme/" + __ACTIVE_COLOR + (__ACTIVE_COLOR === "" ? "" : "-") + "meegotouch-view-header-fixed-pressed" :
+                                               "image://theme/" + __ACTIVE_COLOR + (__ACTIVE_COLOR === "" ? "" : "-") + "meegotouch-view-header-fixed"
 
     Label {
         id: titleLabel
         x: __MARGIN
-        y: subtitle.length == 0 ? 15 : 10
+        y: subtitle.length == 0 ? 16 : 10
 
-        color: "white"
-        font.pixelSize: subtitle.length == 0 ? __HEADER_FONT_SIZE : __STANDARD_FONT_SIZE
-        font.bold: subtitle.length == 0 ? false : true
+        color: __ACTIVE_COLOR === "" ? "black" : "white"
+        font.pixelSize: subtitle.length === 0 ? __HEADER_FONT_SIZE : __STANDARD_FONT_SIZE
+        font.bold: subtitle.length === 0 ? false : true
     }
 
     Label {
@@ -30,10 +30,10 @@ Image {
             leftMargin: __MARGIN
         }
 
-        color: "white"
+        color: __ACTIVE_COLOR === "" ? "black" : "white"
         font.pixelSize: __SMALL_FONT_SIZE
         font.bold: false
-        visible: text.length == 0 ? false : true
+        visible: text.length === 0 ? false : true
     }
 
     Image {
