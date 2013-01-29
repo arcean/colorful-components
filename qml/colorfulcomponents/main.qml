@@ -58,7 +58,7 @@ PageStackWindow {
     AboutDialog {
         id: aboutDialog
 
-        message: "Technology preview for the colorful-components package. <br><br> &copy; Tomasz Pieniążek 2012 <br>"
+        message: "Technology preview for the colorful-components package. <br><br> &copy; Tomasz Pieniążek 2012, 2013<br>"
         icon: "gfx/info.png"
     }
 
