@@ -1,8 +1,8 @@
 import QtQuick 1.1
+import QtMobility.feedback 1.1
 
 /*
-Copyright (c) 2011-2012, Vasiliy Sorokin <sorokin.vasiliy@gmail.com>, Aleksey Mikhailichenko <a.v.mich@gmail.com>
-Copyright (c) 2012, Tomasz Pieniążek <t.pieniazek@gazeta.pl>
+Copyright (c) 2011-2012, Vasiliy Sorokin <sorokin.vasiliy@gmail.com>, Aleksey Mikhailichenko <a.v.mich@gmail.com>, Arto Jalkanen <ajalkane@gmail.com>
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification,
@@ -42,23 +42,34 @@ Usage:
         minutesDotImage: "image://theme/meegotouch-timepicker-disc-minutes-" + orientationSuffix()
     }
 
-Usage for getting a number of minutes with no hours (here up to 6 hours worth of minutes):
+If you want to use TimePicker within a Flickable, you will need to disable flickable while TimePicker is active. Example:
 
-    TimePicker {
-        id: timePicker
-        anchors.centerIn: parent
+    Flickable {
+        id: flickable
+        anchors.fill: parent
+        pressDelay: 0 // No delay wanted when hitting TimePicker's area
+        clip: true
+        contentWidth: parent.width
+        contentHeight: childrenRect.height
 
-        function orientationSuffix() {
-            if (screen.currentOrientation === Screen.Portrait || screen.currentOrientation === Screen.PortraitInverted )
-                return "portrait"
-            else
-                return "landscape"
+        TimePicker {
+            id: timePicker
+            anchors.horizontalCenter: parent.horizontalCenter
+
+            function orientationSuffix() {
+                if (screen.currentOrientation === Screen.Portrait || screen.currentOrientation === Screen.PortraitInverted )
+                    return "portrait"
+                else
+                    return "landscape"
+            }
+
+            backgroundImage: "image://theme/meegotouch-timepicker-light-1-" + orientationSuffix()
+            hourDotImage: "image://theme/meegotouch-timepicker-disc-hours-" + orientationSuffix()
+            minutesDotImage: "image://theme/meegotouch-timepicker-disc-minutes-" + orientationSuffix()
+
+            onStartInteraction: flickable.interactive = false
+            onStopInteraction: flickable.interactive = true
         }
-
-        getHours: false
-        minuteRounds: 6
-        backgroundImage: "image://theme/meegotouch-timepicker-light-1-" + orientationSuffix()
-        minutesDotImage: "image://theme/meegotouch-timepicker-disc-minutes-" + orientationSuffix()
     }
 */
 
@@ -69,27 +80,26 @@ Item {
     property int hours: 0
     property int minutes: 0
 
-    property bool getHours: true
-    property int minuteRounds: 3
-
     property alias backgroundImage: bg.source
     property alias hourDotImage: hourDot.source
     property alias minutesDotImage: minuteDot.source
-    property alias overlayImage: overlay.source
 
     property int minuteGradDelta: 6
     property int hourGradDelta: 30
+
+    signal startInteraction
+    signal stopInteraction
 
     width: bg.sourceSize.width
     height: bg.sourceSize.height
 
     onHoursChanged: {
-        if (hours === 24)
+        if (hours == 24)
             hours = 0
     }
 
     onMinutesChanged: {
-        if ((getHours && minutes === 60) || minutes === 60 * minuteRounds)
+        if (minutes == 60)
             minutes = 0
     }
 
@@ -102,33 +112,25 @@ Item {
         property int centerY: parent.height / 2
 
         Image {
-            id: overlay
-            anchors.centerIn: parent
-        }
-
-        Image {
             id: hourDot
             anchors.fill: parent
             rotation: timePicker.hours * 30
             smooth: true
-            visible: getHours
         }
 
         Text {
             id: hourText
-            property int hourRadiusX: paintedWidth / 2
-            property int hourRadiusY: paintedHeight / 2
+            property int hourRadius: parent.width * 0.055
             property int hourTrackRadius: parent.width * 0.16
 
-            x: (parent.centerX - hourRadiusX) + hourTrackRadius
+            x: (parent.centerX - hourRadius) + hourTrackRadius
                * Math.cos(timePicker.hours * timePicker.hourGradDelta * (Math.PI / 180) - (Math.PI / 2));
-            y: (parent.centerY - hourRadiusY) + hourTrackRadius
+            y: (parent.centerY - hourRadius) + hourTrackRadius
                * Math.sin(timePicker.hours * timePicker.hourGradDelta * (Math.PI / 180) - (Math.PI / 2));
 
-            font.pixelSize: timePicker.width * 0.09
+            font.pixelSize: timePicker.width * 0.1
 
             text: (timePicker.hours < 10 ? "0" : "") + timePicker.hours
-            visible: getHours
         }
 
         Image {
@@ -140,18 +142,17 @@ Item {
 
         Text {
             id: minuteText
-            property int minuteRadiusX: paintedWidth / 2
-            property int minuteRadiusY: paintedHeight / 2
+            property int minuteRadius: parent.width * 0.055
             property int minuteTrackRadius: parent.width * 0.38
 
-            x: parent.centerX - minuteRadiusX + minuteTrackRadius
+            x: parent.centerX - minuteRadius + minuteTrackRadius
                 * Math.cos(timePicker.minutes * timePicker.minuteGradDelta * (Math.PI / 180) - (Math.PI / 2));
-            y: parent.centerY - minuteRadiusY + minuteTrackRadius
+            y: parent.centerY - minuteRadius + minuteTrackRadius
                 * Math.sin(timePicker.minutes * timePicker.minuteGradDelta * (Math.PI / 180) - (Math.PI / 2));
 
-            font.pixelSize: timePicker.width * 0.09
+            font.pixelSize: timePicker.width * 0.1
             color: "#CCCCCC"
-            text: ((timePicker.minutes < 10 && getHours) ? "0" : "") + timePicker.minutes
+            text: (timePicker.minutes < 10 ? "0" : "") + timePicker.minutes
         }
     }
 
@@ -163,11 +164,13 @@ Item {
         property real previousAlpha: -1
 
         onPressed: {
+            startInteraction()
             currentHandler = chooseHandler(mouseX, mouseY)
             previousAlpha = findAlpha(mouseX, mouseY)
         }
 
         onReleased: {
+            stopInteraction()
             currentHandler = -1
             previousAlpha = -1
         }
@@ -179,15 +182,29 @@ Item {
 
             newAlpha = findAlpha(mouseX, mouseY)
 
+            var doRumble = false
             if (currentHandler > 0) {
-                timePicker.minutes = getNewTime(timePicker.minutes, newAlpha, timePicker.minuteGradDelta, (getHours ? 1 : minuteRounds))
+                var newMins = getNewTime(timePicker.minutes, newAlpha, timePicker.minuteGradDelta, 1)
+                if (newMins !== timePicker.minutes) {
+                    timePicker.minutes = newMins
+                    doRumble = true
+                }
+            } else {
+                var newHours = getNewTime(timePicker.hours, newAlpha, timePicker.hourGradDelta, 2)
+                if (newHours !== timePicker.hours) {
+                    timePicker.hours = newHours
+                    doRumble = true
+                }
+
             }
-            else
-                timePicker.hours = getNewTime(timePicker.hours, newAlpha, timePicker.hourGradDelta, 2)
+            if (doRumble) {
+                console.log("TimePicker rumble start")
+                rumbleEffect.start()
+            }
         }
 
         function sign(number) {
-            return number >= 0 ? 1 : -1;
+            return  number >= 0 ? 1 : -1;
         }
 
         function getNewTime(source, alpha, resolution, boundFactor) {
@@ -225,7 +242,7 @@ Item {
 
         function chooseHandler(mouseX, mouseY) {
             var radius = Math.sqrt(Math.pow(bg.centerX - mouseX, 2) + Math.pow(bg.centerY - mouseY, 2));
-            if (radius <= bg.width * 0.25 && getHours)
+            if (radius <= bg.width * 0.25)
                 return 0
             else if(radius < bg.width * 0.5)
                 return 1
@@ -233,4 +250,10 @@ Item {
         }
 
     }
+
+    HapticsEffect {
+         id: rumbleEffect
+         intensity: 0.1
+         duration: 1
+     }
 }
